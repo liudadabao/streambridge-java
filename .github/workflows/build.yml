@@ -1,0 +1,32 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+      - name: Verify reactor
+        run: ./mvnw --batch-mode --no-transfer-progress verify
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+      - name: Run framework-neutral example on Java 8
+        run: >-
+          java -cp
+          streambridge-api/target/classes:streambridge-core/target/classes:streambridge-engine-mock/target/classes:streambridge-example-plain-java/target/classes
+          io.github.streambridge.example.PlainJavaExample
+

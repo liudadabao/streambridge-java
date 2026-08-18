@@ -1,0 +1,11 @@
+StreamBridge
+Copyright 2026 StreamBridge contributors
+
+This product interoperates with ZLMediaKit through its public C API.
+ZLMediaKit is maintained by the ZLMediaKit project authors and is distributed
+under the license found in the upstream ZLMediaKit repository.
+
+The project architecture was informed by public documentation and usage
+experience from the open-source zlm4j project by lidaofu-hub. No zlm4j Java
+source code, documentation text, or project structure is copied into this work.
+
